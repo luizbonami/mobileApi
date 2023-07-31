@@ -14,3 +14,6 @@ public class HelloController {
         return "Hello World!";
     }
 }
+
+
+//spring.flyway.baselineOnMigrate=true  colocar essa linha no application.properties

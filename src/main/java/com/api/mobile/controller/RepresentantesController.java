@@ -1,12 +1,13 @@
 package com.api.mobile.controller;
 
+
 import com.api.mobile.representante.DadosCadastroRepresentante;
 import com.api.mobile.representante.DadosListagemRepresentante;
 import com.api.mobile.representante.Representante;
 import com.api.mobile.representante.RepresentanteRepository;
-import jdk.jfr.Frequency;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.gson.GsonAutoConfiguration;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -34,5 +35,16 @@ public class RepresentantesController {
     public Page<DadosListagemRepresentante> listarordenado(@PageableDefault(sort = {"nome"})  Pageable paginacao){
         return repository.findAll(paginacao).map(DadosListagemRepresentante::new);
     }
+
+    @GetMapping("/teste")
+    public  List<DadosListagemRepresentante> listanova(){
+        return  repository.findByTeste().stream().map(DadosListagemRepresentante::new).toList();
+    }
+
+    @GetMapping("/teste2")
+    public Page<DadosListagemRepresentante> listarTeste(Pageable paginacao){
+        return repository.findByTestePage(paginacao).map(DadosListagemRepresentante::new);
+    }
+
 }
 
