@@ -35,5 +35,13 @@ public class ClienteView {
     private String cep;
     private String pais;
     private String observacoes;
+    private Float valorlimitecredito;
+    private String statusclienteativo;
+    private Float valordescpadraocf;
+    private Long codigocontatoprincipal;
+    private String nomecontatoprincipal;
+    private String dataultimopedido;
+    private Long codigogrupotributacao;
+
 
 }

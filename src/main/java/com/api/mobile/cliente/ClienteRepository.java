@@ -5,6 +5,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.List;
+
 public interface ClienteRepository  extends JpaRepository<ClienteView,Long> {
 /*
     @Query(value = """
@@ -48,5 +50,9 @@ public interface ClienteRepository  extends JpaRepository<ClienteView,Long> {
 
     @Query(value = "SELECT * FROM V_API_CLIENTE WHERE CODIGO_REPRESENTANTE =?1 ", nativeQuery = true)
     Page<ClienteView> findByCodRepresentante(Long codigoRepresentante, Pageable pageable);
+
+    @Query(value = "SELECT * FROM V_API_CLIENTE ORDER BY razao ", nativeQuery = true)
+    List<ClienteView> findAllOrderRazao();
+
 
 }
