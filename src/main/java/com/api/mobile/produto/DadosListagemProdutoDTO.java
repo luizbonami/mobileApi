@@ -21,8 +21,8 @@ public record DadosListagemProdutoDTO( Long codigoProduto,
           Float pesoLiquido,
           Long codClassificacaoFiscal,
           Float precoVenda,
-          Float saldo,
-          String embalagem) {
+          Float saldo, Long embalagem) {
+
     public DadosListagemProdutoDTO(ProdutoView produtoView){
         this(produtoView.getCodigoproduto(),
              produtoView.getIdprd(),

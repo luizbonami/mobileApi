@@ -37,5 +37,5 @@ public class ProdutoView {
     private  Long codclassificacaofiscal;
     private  Float precovenda;
     private  Float saldo;
-    private  String embalagem;
+    private  Long embalagem;
 }

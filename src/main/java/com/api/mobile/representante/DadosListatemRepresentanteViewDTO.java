@@ -1,6 +1,6 @@
 package com.api.mobile.representante;
 
-public record DadosListatemRepresentanteViewDTO(Long codigo, String nome, String nomeFantasia, String email, String fone,  String logradouro, String complemento, String bairro, String cep, String cidade, String estado, String pais,String senha, String totalCliente) {
+public record DadosListatemRepresentanteViewDTO(Long codigo, String nome, String nomefantasia, String email, String fone,  String logradouro, String complemento, String bairro, String cep, String cidade, String estado, String pais,String senha, String totalcliente) {
 
     public  DadosListatemRepresentanteViewDTO(RepresentanteView representanteView ){
         this(representanteView.getCodigo(),
