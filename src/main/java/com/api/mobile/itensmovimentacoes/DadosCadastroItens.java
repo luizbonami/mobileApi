@@ -4,6 +4,7 @@ import lombok.Getter;
 
 
 public record DadosCadastroItens(
+    Long codigoFilial,
     Long codigoLocalEstoque,
     Long codigoUnidade,
     Long codigoProduto,

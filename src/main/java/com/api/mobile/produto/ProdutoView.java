@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = "codigoProduto")
+@EqualsAndHashCode(of = "codigoproduto")
 public class ProdutoView {
 
     @Id
@@ -36,6 +36,7 @@ public class ProdutoView {
     private  Float pesoliquido;
     private  Long codclassificacaofiscal;
     private  Float precovenda;
-    private  Float saldo;
+    private  Long saldo;
     private  Long embalagem;
+    private Long codigounidadevenda;
 }

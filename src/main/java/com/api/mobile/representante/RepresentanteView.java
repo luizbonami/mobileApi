@@ -20,6 +20,7 @@ public class RepresentanteView {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
+    private Long codigorepresentante;
     private String nome;
     private String nomefantasia;
     private String email;

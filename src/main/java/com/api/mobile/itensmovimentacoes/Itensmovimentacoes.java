@@ -3,6 +3,7 @@ package com.api.mobile.itensmovimentacoes;
 
 import com.api.mobile.movimentacoes.Movimentacoes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,13 +21,17 @@ public class Itensmovimentacoes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="CODMOV")
     private Movimentacoes movimentacoes;
 
     private Long codcoligada;
     private Long codfilial;
+    private Long codigoFilialOrigem;
+    private Long codigoFilialDestino;
     private Long codlocalestoque;
+    private Long codlocaldestino;
     private Long codigoUnidade;
     private Long codproduto;
     private  String idproduto;
@@ -34,7 +39,12 @@ public class Itensmovimentacoes {
     private  String descproduto;
     private  Float quantidade;
     private  Float valorunitario;
+    private  Float valorunitarioCalculado;
+    private  Float valorunitarioLiquido;
+    private  Float valorunitarioOriginal;
     private  Float valortotal;
+    private  Float valortotalLiquido;
+
 
     public Itensmovimentacoes(DadosCadastroItens dados){
         this.codcoligada = 1L;
@@ -47,7 +57,11 @@ public class Itensmovimentacoes {
         this.descproduto = dados.descricaoProduto();
         this.quantidade = dados.quantidade();
         this.valorunitario = dados.valorUnitario();
+        this.valorunitarioCalculado = dados.valorUnitario();
+        this.valorunitarioLiquido = dados.valorUnitario();
+        this.valorunitarioOriginal = dados.valorUnitario();
         this.valortotal = dados.valorTotal();
+        this.valortotalLiquido = dados.valorTotal();
     }
 
 }

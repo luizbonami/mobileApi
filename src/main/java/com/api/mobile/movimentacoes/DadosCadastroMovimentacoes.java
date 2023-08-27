@@ -4,21 +4,32 @@ package com.api.mobile.movimentacoes;
 import com.api.mobile.itensmovimentacoes.DadosCadastroItens;
 import lombok.Getter;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import java.util.List;
 
 
 public record DadosCadastroMovimentacoes(
         Long codigoFilial,
         Long codigoColigada,
+        Long codigoUsuario,
         Long codigoTipoMovimento,
+        Long codigoSerie,
+        Long codlocalorigem,
+        Long codlocaldestino,
+        Long codfilialorigem,
+        Long codfilialdestino,
+        String idmov,
         String codigoTipoMov,
         Long codigoClienteFornecedor,
         Long codigoRepresentante,
         Long codigoCodicaoPagamento,
         Long codigoTipoPagamento,
-        Date dataEmissao,
-        Date dataEntrega,
+        LocalDate dataEmissao,
+        LocalDate dataEntrega,
+        LocalDate dataentrada,
+        LocalDateTime datageracao,
         Float valorTotalItens,
         Float valorTotalPedido,
         String numeroApi,

@@ -4,6 +4,7 @@ import com.api.mobile.movimentacoes.DadosCadastroMovimentacoes;
 import com.api.mobile.movimentacoes.Movimentacoes;
 
 import com.api.mobile.services.MovimentacoesService;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +17,7 @@ public class MovimentacoesController {
 
     @Autowired
     private MovimentacoesService movimentacoesService;
+    @JsonSerialize
     @PostMapping("/insert")
     public Movimentacoes criarMovimento(@RequestBody DadosCadastroMovimentacoes movimentacoes){
         return movimentacoesService.criarMovimento(movimentacoes);

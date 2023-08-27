@@ -3,16 +3,20 @@ package com.api.mobile.movimentacoes;
 import com.api.mobile.itensmovimentacoes.DadosCadastroItens;
 import com.api.mobile.itensmovimentacoes.Itensmovimentacoes;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
-@Entity
+
+
+
+@Entity(name="MOVIMENTACOES")
 @Table(name="MOVIMENTACOES")
 @Getter
 @Setter
@@ -25,20 +29,35 @@ public class Movimentacoes {
     private Long codigo;
     private Long codcoligada;
     private Long codfilial;
+    private Long codusuario;
+    private Long codigoUsuario;
+    private Long codfuncionario1;
     private Long codigoTipomovimento;
+    private Long codserie;
+    private Long codlocalorigem;
+    private Long codlocaldestino;
+    private Long codfilialorigem;
+    private Long codfilialdestino;
+    private Long indicaPresencaTipoVenda;
+    private Long codcentrocusto;
+    private Long codigoEventofinanceiro;
+    private  String idmov;
     private  String codtipomov;
     private Long codcliforn;
     private Long codrepresentante;
     private Long codcondicoespagamento;
     private Long codigoTipopagamento;
-    private Date dataemissao;
-    private Date dataentrega;
+    private LocalDate dataemissao;
+    private LocalDate dataentrega;
+    private LocalDate dataentrada;
+    private LocalDateTime datageracao;
     private Float valortotal;
     private Float valorliquido;
     private String nupedidoWmw;
     private String observacoes;
     private String observacoesMovimento;
     private Long status;
+
 
    // @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @OneToMany(mappedBy = "movimentacoes", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -48,7 +67,16 @@ public class Movimentacoes {
     public Movimentacoes(DadosCadastroMovimentacoes dados){
         this.codcoligada = dados.codigoColigada();
         this.codfilial = dados.codigoFilial();
+        this.codusuario = dados.codigoUsuario();
+        this.codigoUsuario = dados.codigoUsuario();
+        this.codfuncionario1 = dados.codigoUsuario();
         this.codigoTipomovimento = dados.codigoTipoMovimento();
+        this.codserie = dados.codigoSerie();
+        this.codlocalorigem = dados.codlocalorigem();
+        this.codlocaldestino = dados.codlocaldestino();
+        this.codfilialorigem = dados.codfilialorigem();
+        this.codfilialdestino = dados.codfilialdestino();
+        this.idmov = dados.idmov();
         this.codtipomov = dados.codigoTipoMov();
         this.codcliforn = dados.codigoClienteFornecedor();
         this.codrepresentante = dados.codigoRepresentante();
@@ -56,6 +84,8 @@ public class Movimentacoes {
         this.codigoTipopagamento = dados.codigoTipoPagamento();
         this.dataemissao = dados.dataEmissao();
         this.dataentrega = dados.dataEntrega();
+        this.dataentrada = dados.dataentrada();
+        this.datageracao = dados.datageracao();
         this.valortotal = dados.valorTotalItens();
         this.valorliquido = dados.valorTotalPedido();
         this.nupedidoWmw = dados.numeroApi();
