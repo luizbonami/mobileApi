@@ -47,6 +47,7 @@ public class Movimentacoes {
     private Long codrepresentante;
     private Long codcondicoespagamento;
     private Long codigoTipopagamento;
+    private Long codtransportadora;
     private LocalDate dataemissao;
     private LocalDate dataentrega;
     private LocalDate dataentrada;

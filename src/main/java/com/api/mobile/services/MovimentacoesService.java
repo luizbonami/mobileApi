@@ -10,6 +10,7 @@ import com.api.mobile.serie.Series;
 import com.api.mobile.serie.SeriesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 @Service
@@ -23,6 +24,7 @@ public class MovimentacoesService {
 
     @Autowired
     SeriesRepository seriesRepository;
+    @Transactional // coloquei, pois estou atualizando 2 entidades estava atualizando a Serie quando falhava ao criar o movimento
     public Movimentacoes criarMovimento(DadosCadastroMovimentacoes dadosCadastroMovimentacoes){
         Movimentacoes movimentacoes = new Movimentacoes();
         movimentacoes.setCodcoligada(dadosCadastroMovimentacoes.codigoColigada());
@@ -42,6 +44,7 @@ public class MovimentacoesService {
         movimentacoes.setCodrepresentante(dadosCadastroMovimentacoes.codigoRepresentante());
         movimentacoes.setCodcondicoespagamento(dadosCadastroMovimentacoes.codigoCodicaoPagamento());
         movimentacoes.setCodigoTipopagamento(dadosCadastroMovimentacoes.codigoTipoPagamento());
+        movimentacoes.setCodtransportadora(dadosCadastroMovimentacoes.codigoTransportadora());
         movimentacoes.setIndicaPresencaTipoVenda(3L);
         movimentacoes.setCodcentrocusto(51L);
         movimentacoes.setCodigoEventofinanceiro(7L);

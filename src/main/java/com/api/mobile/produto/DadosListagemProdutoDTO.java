@@ -20,7 +20,7 @@ public record DadosListagemProdutoDTO( Long codigoProduto,
           Float pesoBruto,
           Float pesoLiquido,
           Long codClassificacaoFiscal,
-          Float precoVenda, Long saldo, Long embalagem, Long codigoUnidadeVenda) {
+          Float precoVenda,Float precoMinimo, Long saldo, Long embalagem, Long codigoUnidadeVenda) {
 
     public DadosListagemProdutoDTO(ProdutoView produtoView){
         this(produtoView.getCodigoproduto(),
@@ -44,6 +44,7 @@ public record DadosListagemProdutoDTO( Long codigoProduto,
                 produtoView.getPesoliquido(),
                 produtoView.getCodclassificacaofiscal(),
                 produtoView.getPrecovenda(),
+                produtoView.getPrecominimo(),
                 produtoView.getSaldo(),
                 produtoView.getEmbalagem(),
                 produtoView.getCodigounidadevenda()

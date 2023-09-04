@@ -26,6 +26,7 @@ public record DadosCadastroMovimentacoes(
         Long codigoRepresentante,
         Long codigoCodicaoPagamento,
         Long codigoTipoPagamento,
+        Long codigoTransportadora,
         LocalDate dataEmissao,
         LocalDate dataEntrega,
         LocalDate dataentrada,

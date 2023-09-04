@@ -13,7 +13,8 @@ public record DadosCadastroItens(
     String descricaoProduto,
     Float quantidade,
     Float valorUnitario,
-    Float valorTotal){
+    Float valorTotal,
+    Float valorTotalItemTributo){
 
 
 }
