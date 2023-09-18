@@ -3,7 +3,6 @@ package com.api.mobile.movimentacoes;
 import com.api.mobile.itensmovimentacoes.DadosCadastroItens;
 import com.api.mobile.itensmovimentacoes.Itensmovimentacoes;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 import lombok.*;
 

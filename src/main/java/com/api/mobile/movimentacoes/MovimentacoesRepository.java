@@ -1,12 +1,10 @@
 package com.api.mobile.movimentacoes;
 
-import com.api.mobile.cliente.ClienteView;
-import com.api.mobile.representante.Representante;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.w3c.dom.stylesheets.LinkStyle;
+
 
 import java.util.List;
 

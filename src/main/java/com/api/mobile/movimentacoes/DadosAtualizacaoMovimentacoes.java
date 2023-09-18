@@ -1,7 +1,6 @@
 package com.api.mobile.movimentacoes;
 
 import com.api.mobile.itensmovimentacoes.DadosAtualizacaoItens;
-import com.api.mobile.itensmovimentacoes.DadosListagemItens;
 
 import java.time.LocalDate;
 import java.util.List;

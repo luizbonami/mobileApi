@@ -1,6 +1,5 @@
 package com.api.mobile.municipio;
 
-import com.api.mobile.usuario.UsuarioView;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

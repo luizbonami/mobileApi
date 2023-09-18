@@ -1,9 +1,6 @@
 package com.api.mobile.cliente;
 
 import com.api.mobile.contato.Contato;
-import com.api.mobile.contato.DadosCadastroContato;
-import com.api.mobile.itensmovimentacoes.DadosCadastroItens;
-import com.api.mobile.itensmovimentacoes.Itensmovimentacoes;
 import jakarta.persistence.*;
 import lombok.*;
 

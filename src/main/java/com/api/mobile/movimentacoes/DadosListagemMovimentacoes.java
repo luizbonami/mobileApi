@@ -1,10 +1,8 @@
 package com.api.mobile.movimentacoes;
 
 import com.api.mobile.itensmovimentacoes.DadosListagemItens;
-import com.api.mobile.itensmovimentacoes.Itensmovimentacoes;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 public record DadosListagemMovimentacoes(

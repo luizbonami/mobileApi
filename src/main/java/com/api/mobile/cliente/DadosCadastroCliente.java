@@ -3,7 +3,6 @@ package com.api.mobile.cliente;
 import com.api.mobile.contato.DadosCadastroContato;
 import jakarta.validation.constraints.NotBlank;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public record DadosCadastroCliente(Long codigoFilial,
