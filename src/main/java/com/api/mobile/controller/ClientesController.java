@@ -1,21 +1,18 @@
 package com.api.mobile.controller;
 
-import com.api.mobile.cliente.ClienteDadosFinanceirosRepository;
-import com.api.mobile.cliente.ClienteRepository;
-import com.api.mobile.cliente.DadosListagemCliente;
+import com.api.mobile.cliente.*;
 
-import com.api.mobile.cliente.DadosListagemDadosFinanceirosDTO;
-import com.api.mobile.representante.DadosListagemRepresentante;
+
+import com.api.mobile.services.ClienteService;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,10 +20,24 @@ import java.util.List;
 @RequestMapping("clientes")
 public class ClientesController {
     @Autowired
-    private ClienteRepository repository;
+    private ClienteViewRepository repository;
 
     @Autowired
     private ClienteDadosFinanceirosRepository repositoryDadosFinanceiros;
+
+    @Autowired
+    private ClienteService clienteService;
+    @JsonSerialize
+    @PostMapping("/insert")
+    public ResponseEntity<String> criarCliente(@RequestBody @Valid DadosCadastroCliente cliente){
+        if(clienteService.cnpjJaExiste(cliente.cnpj())){
+            return ResponseEntity.badRequest().body("CNPJ já cadastrado");
+        }
+        clienteService.CadastrarCliente(cliente);
+        return ResponseEntity.ok("Cliente cadastrado com sucesso!");
+    }
+
+
     @GetMapping
     public Page<DadosListagemCliente> listar(Pageable paginacao){
         return repository.findByClienteView(paginacao).map(DadosListagemCliente::new);

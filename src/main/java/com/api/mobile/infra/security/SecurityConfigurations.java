@@ -32,6 +32,8 @@ public class SecurityConfigurations {
                         .requestMatchers(HttpMethod.POST,"/movimentacoes").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST,"/movimentacoes/insert").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST,"/representantes").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST,"/clientes").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST,"/clientes/insert").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)

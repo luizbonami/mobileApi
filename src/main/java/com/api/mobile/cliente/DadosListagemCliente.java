@@ -24,7 +24,9 @@ public record DadosListagemCliente(Long codigo
         ,String nomeContatoPrincipal
         ,String dataUltimoPedido
         ,Long codigoGrupoTributacao
-        ,Float descontoPadrao) {
+        ,Float descontoPadrao
+        ,Long statusInadimplente
+        ,String tipo ) {
 
     public DadosListagemCliente(ClienteView clienteView){
         this(clienteView.getCodigo(),
@@ -51,7 +53,9 @@ public record DadosListagemCliente(Long codigo
                 clienteView.getNomecontatoprincipal(),
                 clienteView.getDataultimopedido(),
                 clienteView.getCodigogrupotributacao(),
-                clienteView.getDescontopadrao()
+                clienteView.getDescontopadrao(),
+                clienteView.getStatusinadimplente(),
+                clienteView.getTipo()
         );
 
     }

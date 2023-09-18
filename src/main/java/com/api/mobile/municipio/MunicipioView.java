@@ -1,4 +1,4 @@
-package com.api.mobile.usuario;
+package com.api.mobile.municipio;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -6,13 +6,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Entity(name = "UsuarioView")
+@Entity(name="MunicipioView")
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
-public class UsuarioView {
+@AllArgsConstructor
+public class MunicipioView {
     @Id
     private Long codigo;
     private String nome;
-    private Long codigoRepresentante;
+    private String uf;
+
 }

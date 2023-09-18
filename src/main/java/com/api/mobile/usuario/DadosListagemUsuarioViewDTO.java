@@ -1,7 +1,7 @@
 package com.api.mobile.usuario;
 
 
-public record DadosListagemUsuarioViewDTO(Long codigo, String nome, String codigoRepresentante) {
+public record DadosListagemUsuarioViewDTO(Long codigo, String nome, Long codigoRepresentante) {
 
     public DadosListagemUsuarioViewDTO(UsuarioView usuarioView){
         this(usuarioView.getCodigo(),

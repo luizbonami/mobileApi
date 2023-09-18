@@ -24,7 +24,6 @@ public class RepresentantesController {
     @PostMapping
     public  void cadastrar(@RequestBody DadosCadastroRepresentante dados ){
       repository.save(new Representante(dados));
-
     }
 
     @GetMapping

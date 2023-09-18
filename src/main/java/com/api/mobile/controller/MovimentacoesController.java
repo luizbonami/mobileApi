@@ -1,15 +1,17 @@
 package com.api.mobile.controller;
 
-import com.api.mobile.movimentacoes.DadosCadastroMovimentacoes;
-import com.api.mobile.movimentacoes.Movimentacoes;
+
+import com.api.mobile.movimentacoes.*;
 
 import com.api.mobile.services.MovimentacoesService;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("movimentacoes")
@@ -17,18 +19,43 @@ public class MovimentacoesController {
 
     @Autowired
     private MovimentacoesService movimentacoesService;
+
+    @Autowired
+    MovimentacoesRepository movimentacoesRepository;
     @JsonSerialize
     @PostMapping("/insert")
     public Movimentacoes criarMovimento(@RequestBody DadosCadastroMovimentacoes movimentacoes){
         return movimentacoesService.criarMovimento(movimentacoes);
 
     }
-    /*
-    @PostMapping("/insert")
-    public Movimentacoes criarMovimentoInsert(@RequestBody Movimentacoes movimentacoes){
-        return movimentacoesService.criarMovimento(movimentacoes);
 
+    @PutMapping("/edit/{codigo}")
+    @Transactional
+    public ResponseEntity<?> atualizarMovimentacoes(@PathVariable Long codigo, @RequestBody DadosAtualizacaoMovimentacoes dados){
+
+        var movimentacao  = movimentacoesRepository.getReferenceById(codigo);
+
+        if (movimentacao == null){
+            return ResponseEntity.notFound().build();
+        }
+        movimentacao.atualizarDadosMovimento(dados);
+
+        return ResponseEntity.ok().body("movimentacaoAtualizada");
     }
-     */
+
+    @GetMapping("/list/{codigoRepresentante}")
+    public List<DadosListagemMovimentacoes> listarPorRepresentante(@PathVariable Long codigoRepresentante ){
+        return  movimentacoesRepository.findByCodRepresentante(codigoRepresentante).stream().map(DadosListagemMovimentacoes::new).toList();
+    }
+
+    @GetMapping("/list/{codigoRepresentante}/{codigoCliente}")
+    public List<DadosListagemMovimentacoes> listarPorRepresentante(@PathVariable Long codigoRepresentante, @PathVariable Long codigoCliente){
+        return  movimentacoesRepository.findByCodRepCodCliente(codigoRepresentante,codigoCliente).stream().map(DadosListagemMovimentacoes::new).toList();
+    }
+
+    @GetMapping("/{codigo}")
+    public List<DadosListagemMovimentacoes> listarPorCodigo(@PathVariable Long codigo){
+        return  movimentacoesRepository.findById(codigo).stream().map(DadosListagemMovimentacoes::new).toList();
+    }
 
 }

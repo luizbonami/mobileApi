@@ -114,4 +114,21 @@ public class Movimentacoes {
 
     }
 
+    public void atualizarDadosMovimento(DadosAtualizacaoMovimentacoes dados) {
+        if (dados.dataEntrega() != null){
+            this.dataentrega = dados.dataEntrega();
+        }
+        if (dados.observacaoFiscal() != null){
+            this.observacoes = dados.observacaoFiscal();
+        }
+        if (dados.observacaoMovimento() != null){
+            this.observacoesMovimento = dados.observacaoMovimento();
+        }
+        if (dados.valorTotalItens() != null){
+            this.valortotal = dados.valorTotalItens();
+        }
+        if (dados.valorTotalPedido() != null){
+            this.valorliquido = dados.valorTotalPedido();
+        }
+    }
 }

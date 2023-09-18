@@ -43,6 +43,8 @@ public class ClienteView {
     private String dataultimopedido;
     private Long codigogrupotributacao;
     private Float descontopadrao;
+    private Long statusinadimplente;
+    private String tipo;
 
 
 }

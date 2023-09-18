@@ -63,5 +63,11 @@ public class Itensmovimentacoes {
         this.valortotal = dados.valorTotal();
         this.valortotalLiquido = dados.valorTotal();
     }
+    public Long getCodmov() {
+        if (this.movimentacoes != null) {
+            return this.movimentacoes.getCodigo();
+        }
+        return null;
+    }
 
 }

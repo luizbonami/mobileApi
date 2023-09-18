@@ -3,9 +3,7 @@ package com.api.mobile.services;
 import com.api.mobile.itensmovimentacoes.DadosCadastroItens;
 import com.api.mobile.itensmovimentacoes.Itensmovimentacoes;
 import com.api.mobile.itensmovimentacoes.ItensmovimentacoesRepository;
-import com.api.mobile.movimentacoes.DadosCadastroMovimentacoes;
-import com.api.mobile.movimentacoes.Movimentacoes;
-import com.api.mobile.movimentacoes.MovimentacoesRepository;
+import com.api.mobile.movimentacoes.*;
 import com.api.mobile.serie.Series;
 import com.api.mobile.serie.SeriesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -106,4 +104,13 @@ public class MovimentacoesService {
     }
 
 
+    public Movimentacoes editarMovimento(DadosAtualizacaoMovimentacoes movimentacoes) {
+
+
+        return null;
+    }
+
+    public Movimentacoes getReferenceById(Long codigo) {
+        return  movimentacoesRepository.getReferenceById(codigo);
+    }
 }
