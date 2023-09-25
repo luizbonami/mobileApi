@@ -1,6 +1,5 @@
 package com.api.mobile.movimentacoes;
 
-import com.api.mobile.itensmovimentacoes.Itensmovimentacoes;
 import com.api.mobile.itensmovimentacoes.ItensmovimentacoesView;
 import jakarta.persistence.*;
 import lombok.*;

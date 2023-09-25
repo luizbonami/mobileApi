@@ -1,7 +1,6 @@
 package com.api.mobile.itensmovimentacoes;
 
 
-import com.api.mobile.movimentacoes.Movimentacoes;
 import com.api.mobile.movimentacoes.MovimentacoesView;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
