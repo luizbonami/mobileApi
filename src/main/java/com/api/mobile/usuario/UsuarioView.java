@@ -15,4 +15,5 @@ public class UsuarioView {
     private Long codigo;
     private String nome;
     private Long codigoRepresentante;
+    private String senha;
 }

@@ -22,6 +22,9 @@ public class MovimentacoesController {
 
     @Autowired
     MovimentacoesRepository movimentacoesRepository;
+
+    @Autowired
+    MovimentacoesViewRepository movimentacoesViewRepository;
     @JsonSerialize
     @PostMapping("/insert")
     public Movimentacoes criarMovimento(@RequestBody DadosCadastroMovimentacoes movimentacoes){
@@ -45,17 +48,17 @@ public class MovimentacoesController {
 
     @GetMapping("/list/{codigoRepresentante}")
     public List<DadosListagemMovimentacoes> listarPorRepresentante(@PathVariable Long codigoRepresentante ){
-        return  movimentacoesRepository.findByCodRepresentante(codigoRepresentante).stream().map(DadosListagemMovimentacoes::new).toList();
+        return  movimentacoesViewRepository.findByCodRepresentante(codigoRepresentante).stream().map(DadosListagemMovimentacoes::new).toList();
     }
 
-    @GetMapping("/list/{codigoRepresentante}/{codigoCliente}")
-    public List<DadosListagemMovimentacoes> listarPorRepresentante(@PathVariable Long codigoRepresentante, @PathVariable Long codigoCliente){
-        return  movimentacoesRepository.findByCodRepCodCliente(codigoRepresentante,codigoCliente).stream().map(DadosListagemMovimentacoes::new).toList();
+   @GetMapping("/list/{codigoRepresentante}/{codigoVendedor}")
+    public List<DadosListagemMovimentacoes> listarPorRepresentanteCliente(@PathVariable Long codigoRepresentante, @PathVariable Long codigoVendedor){
+        return  movimentacoesViewRepository.findByCodRepresentanteVendedor(codigoRepresentante,codigoVendedor).stream().map(DadosListagemMovimentacoes::new).toList();
     }
-
+/*
     @GetMapping("/{codigo}")
     public List<DadosListagemMovimentacoes> listarPorCodigo(@PathVariable Long codigo){
         return  movimentacoesRepository.findById(codigo).stream().map(DadosListagemMovimentacoes::new).toList();
     }
-
+*/
 }

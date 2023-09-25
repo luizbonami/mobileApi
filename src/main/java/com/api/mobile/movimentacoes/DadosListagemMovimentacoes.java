@@ -10,14 +10,19 @@ public record DadosListagemMovimentacoes(
         Long codigoFilial,
         Long codigoColigada,
         Long codigoUsuario,
+        Long codigoVendedor,
         Long codigoTipoMovimento,
         Long codigoSerie,
         String codigoTipoMov,
         Long codigoClienteFornecedor,
+        String nomeCliente,
         Long codigoRepresentante,
         Long codigoCodicaoPagamento,
+        String descCondpagamento,
         Long codigoTipoPagamento,
+        String descricaoTipoPagamento,
         Long codigoTransportadora,
+        String descTransportadora,
         String idmov,
         LocalDate dataEmissao,
         LocalDate dataEntrega,
@@ -28,23 +33,30 @@ public record DadosListagemMovimentacoes(
         String observacaoMovimento,
         Long status,
 
+        Long totalDeprodutos,
+
         List<DadosListagemItens> itens
 
 
 ) {
-    public  DadosListagemMovimentacoes(Movimentacoes movimentacoes){
+    public  DadosListagemMovimentacoes(MovimentacoesView movimentacoes){
         this(movimentacoes.getCodigo(),
                 movimentacoes.getCodfilial(),
                 movimentacoes.getCodcoligada(),
                 movimentacoes.getCodusuario(),
+                movimentacoes.getCodfuncionario1(),
                 movimentacoes.getCodigoTipomovimento(),
                 movimentacoes.getCodserie(),
                 movimentacoes.getCodtipomov(),
                 movimentacoes.getCodcliforn(),
+                movimentacoes.getNomecliente(),
                 movimentacoes.getCodrepresentante(),
                 movimentacoes.getCodcondicoespagamento(),
+                movimentacoes.getDesccondpagamento(),
                 movimentacoes.getCodigoTipopagamento(),
+                movimentacoes.getDescricaotipopagamento(),
                 movimentacoes.getCodtransportadora(),
+                movimentacoes.getDesctransportadora(),
                 movimentacoes.getIdmov(),
                 movimentacoes.getDataemissao(),
                 movimentacoes.getDataentrega(),
@@ -54,9 +66,11 @@ public record DadosListagemMovimentacoes(
                 movimentacoes.getObservacoes(),
                 movimentacoes.getObservacoesMovimento(),
                 movimentacoes.getStatus(),
+                movimentacoes.getTotaldeprodutos(),
                 movimentacoes.getItens().stream().map(DadosListagemItens::new).toList());
     }
 
 
 
 }
+

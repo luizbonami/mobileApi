@@ -45,6 +45,9 @@ public class Movimentacoes {
     private Long codcliforn;
     private Long codrepresentante;
     private Long codcondicoespagamento;
+    @Transient
+    private String desccondpagamento;
+
     private Long codigoTipopagamento;
     private Long codtransportadora;
     private LocalDate dataemissao;

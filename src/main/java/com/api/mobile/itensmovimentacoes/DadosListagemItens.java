@@ -11,12 +11,17 @@ public record DadosListagemItens(
         String idprd,
         String codigoSimilar,
         String descricaoProduto,
-        Float quantidade,
+        Long quantidade,
         Float valorUnitario,
-        Float valorTotal
+        Float valorTotal,
+        Float valorUnitarioComTributo,
+        Float valorTotalItemTributo,
+        Float fiscalValorSt,
+        Float fiscalValorIpi
+
 ) {
 
-    public  DadosListagemItens(Itensmovimentacoes itensmovimentacoes){
+    public  DadosListagemItens(ItensmovimentacoesView itensmovimentacoes){
         this(itensmovimentacoes.getCodigo(),
                 itensmovimentacoes.getCodfilial(),
                 itensmovimentacoes.getCodlocalestoque(),
@@ -28,7 +33,11 @@ public record DadosListagemItens(
                 itensmovimentacoes.getDescproduto(),
                 itensmovimentacoes.getQuantidade(),
                 itensmovimentacoes.getValorunitario(),
-                itensmovimentacoes.getValortotal()
+                itensmovimentacoes.getValortotal(),
+                itensmovimentacoes.getValorunitariocomtributo(),
+                itensmovimentacoes.getValortotalitemtributo(),
+                itensmovimentacoes.getFiscalValorSt(),
+                itensmovimentacoes.getFiscalValorIpi()
         );
     }
 
