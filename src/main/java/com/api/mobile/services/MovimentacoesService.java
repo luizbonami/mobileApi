@@ -78,6 +78,8 @@ public class MovimentacoesService {
             item.setValorunitarioOriginal(itemDTO.valorUnitario());
             item.setValortotal(itemDTO.valorTotal());
             item.setValortotalLiquido(itemDTO.valorTotal());
+            item.setFiscalValorSt(itemDTO.fiscalValorSt());
+            item.setFiscalValorIpi(itemDTO.fiscalValorIpi());
 
             movimentacoes.getItens().add(item);
         }

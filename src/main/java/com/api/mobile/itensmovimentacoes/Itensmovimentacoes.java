@@ -44,6 +44,8 @@ public class Itensmovimentacoes {
     private  Float valorunitarioOriginal;
     private  Float valortotal;
     private  Float valortotalLiquido;
+    private  Float fiscalValorSt;
+    private  Float fiscalValorIpi;
 
 
     public Itensmovimentacoes(DadosCadastroItens dados){
@@ -62,6 +64,8 @@ public class Itensmovimentacoes {
         this.valorunitarioOriginal = dados.valorUnitario();
         this.valortotal = dados.valorTotal();
         this.valortotalLiquido = dados.valorTotal();
+        this.fiscalValorSt = dados.fiscalValorSt();
+        this.fiscalValorIpi = dados.fiscalValorIpi();
     }
     public Long getCodmov() {
         if (this.movimentacoes != null) {

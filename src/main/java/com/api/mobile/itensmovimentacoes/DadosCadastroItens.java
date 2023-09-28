@@ -14,7 +14,11 @@ public record DadosCadastroItens(
     Float quantidade,
     Float valorUnitario,
     Float valorTotal,
-    Float valorTotalItemTributo){
+    Float valorTotalItemTributo,
+    Float fiscalValorSt,
+    Float fiscalValorIpi
+
+){
 
 
 }
