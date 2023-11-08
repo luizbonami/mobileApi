@@ -27,7 +27,7 @@ public class UsuarioViewController {
     }
 
     @GetMapping("/{codigoRepresentante}")
-    public List<DadosListagemUsuarioViewDTO> listarPorCodigoRepresentante(@PathVariable Long codigoRepresentante) {
+    public List<DadosListagemUsuarioViewDTO> listarPorCodigoRepresentante(@PathVariable String codigoRepresentante) {
         return usuarioViewRepository.findByCodRepresentante(codigoRepresentante).stream().map(DadosListagemUsuarioViewDTO::new).toList();
     }
 

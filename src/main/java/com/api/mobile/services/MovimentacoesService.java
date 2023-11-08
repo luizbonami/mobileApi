@@ -41,6 +41,9 @@ public class MovimentacoesService {
         movimentacoes.setCodcliforn(dadosCadastroMovimentacoes.codigoClienteFornecedor());
         movimentacoes.setCodrepresentante(dadosCadastroMovimentacoes.codigoRepresentante());
         movimentacoes.setCodcondicoespagamento(dadosCadastroMovimentacoes.codigoCodicaoPagamento());
+        movimentacoes.setRegerarLancamentosFinanceiros(1L);
+        movimentacoes.setRegerarFormaPagamento(1L);
+        movimentacoes.setTipofrete(1L);
         movimentacoes.setCodigoTipopagamento(dadosCadastroMovimentacoes.codigoTipoPagamento());
         movimentacoes.setCodtransportadora(dadosCadastroMovimentacoes.codigoTransportadora());
         movimentacoes.setIndicaPresencaTipoVenda(3L);
@@ -104,6 +107,7 @@ public class MovimentacoesService {
         }
         return ultnumeroAtualizado;
     }
+
 
 
     public Movimentacoes editarMovimento(DadosAtualizacaoMovimentacoes movimentacoes) {

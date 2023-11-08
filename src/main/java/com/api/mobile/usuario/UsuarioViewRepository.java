@@ -12,7 +12,7 @@ public interface UsuarioViewRepository extends JpaRepository<UsuarioView, Long> 
     @Query(value = "SELECT * FROM V_API_USUARIO ORDER  BY NOME", nativeQuery = true)
     List<UsuarioView> findAllUsuario();
 
-    @Query(value = "SELECT * FROM V_API_USUARIO WHERE CODIGO_REPRESENTANTE =?1 ORDER  BY NOME", nativeQuery = true)
-    List<UsuarioView> findByCodRepresentante(Long codigoRepresentante);
+    @Query(value = "SELECT * FROM V_API_USUARIO WHERE CODIGO_REPRESENTANTE LIKE '%'+?1+'%'  ORDER  BY NOME", nativeQuery = true)
+    List<UsuarioView> findByCodRepresentante(String codigoRepresentante);
 
 }

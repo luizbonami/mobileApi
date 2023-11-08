@@ -41,10 +41,42 @@ public class MovimentacoesController {
         if (movimentacao == null){
             return ResponseEntity.notFound().build();
         }
+        movimentacoesRepository.deletarItensMovimentacoesPorId(codigo);
         movimentacao.atualizarDadosMovimento(dados);
 
         return ResponseEntity.ok().body("movimentacaoAtualizada");
     }
+
+
+    @PutMapping("/bloquear/{codigo}")
+    @Transactional
+    public ResponseEntity<?> bloquearMovimentacoes(@PathVariable Long codigo){
+
+        var movimentacao  = movimentacoesRepository.getReferenceById(codigo);
+
+        if (movimentacao == null){
+            return ResponseEntity.notFound().build();
+        }
+        movimentacao.bloquearMovimento("EDITANDO NO APP");
+
+        return ResponseEntity.ok().body("movimentacaoBloqueada");
+    }
+
+
+    @PutMapping("/desbloquear/{codigo}")
+    @Transactional
+    public ResponseEntity<?> desbloquearMovimentacoes(@PathVariable Long codigo){
+
+        var movimentacao  = movimentacoesRepository.getReferenceById(codigo);
+
+        if (movimentacao == null){
+            return ResponseEntity.notFound().build();
+        }
+        movimentacao.desbloquearMovimento();
+
+        return ResponseEntity.ok().body("movimentacaoDesbloqueada");
+    }
+
 
     @GetMapping("/list/{codigoRepresentante}")
     public List<DadosListagemMovimentacoes> listarPorRepresentante(@PathVariable Long codigoRepresentante ){

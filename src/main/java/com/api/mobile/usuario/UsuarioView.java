@@ -14,6 +14,6 @@ public class UsuarioView {
     @Id
     private Long codigo;
     private String nome;
-    private Long codigoRepresentante;
+    private String codigoRepresentante;
     private String senha;
 }

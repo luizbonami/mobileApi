@@ -11,6 +11,8 @@ public record DadosListagemMovimentacoes(
         Long codigoColigada,
         Long codigoUsuario,
         Long codigoVendedor,
+
+        String descVendedor,
         Long codigoTipoMovimento,
         Long codigoSerie,
         String codigoTipoMov,
@@ -26,15 +28,17 @@ public record DadosListagemMovimentacoes(
         String idmov,
         LocalDate dataEmissao,
         LocalDate dataEntrega,
+        LocalDate dataEntradaSaida,
         Float valorTotalItens,
         Float valorTotalPedido,
         String numeroApi,
         String observacaoFiscal,
         String observacaoMovimento,
         Long status,
-
         Long totalDeprodutos,
-
+        Long codigoGrupoTributacao,
+        Float descontoPadrao,
+        String estado,
         List<DadosListagemItens> itens
 
 
@@ -45,6 +49,7 @@ public record DadosListagemMovimentacoes(
                 movimentacoes.getCodcoligada(),
                 movimentacoes.getCodusuario(),
                 movimentacoes.getCodfuncionario1(),
+                movimentacoes.getNomefuncionario1(),
                 movimentacoes.getCodigoTipomovimento(),
                 movimentacoes.getCodserie(),
                 movimentacoes.getCodtipomov(),
@@ -60,6 +65,7 @@ public record DadosListagemMovimentacoes(
                 movimentacoes.getIdmov(),
                 movimentacoes.getDataemissao(),
                 movimentacoes.getDataentrega(),
+                movimentacoes.getDataentrada(),
                 movimentacoes.getValortotal(),
                 movimentacoes.getValorliquido(),
                 movimentacoes.getNupedidoWmw(),
@@ -67,6 +73,9 @@ public record DadosListagemMovimentacoes(
                 movimentacoes.getObservacoesMovimento(),
                 movimentacoes.getStatus(),
                 movimentacoes.getTotaldeprodutos(),
+                movimentacoes.getCodigogrupotributacao(),
+                movimentacoes.getDescontopadrao(),
+                movimentacoes.getEstado(),
                 movimentacoes.getItens().stream().map(DadosListagemItens::new).toList());
     }
 

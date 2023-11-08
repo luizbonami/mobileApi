@@ -24,6 +24,7 @@ public class MovimentacoesView {
     private Long codusuario;
     private Long codigoUsuario;
     private Long codfuncionario1;
+    private  String nomefuncionario1;
     private Long codigoTipomovimento;
     private Long codserie;
     private Long codlocalorigem;
@@ -56,6 +57,9 @@ public class MovimentacoesView {
     private String observacoesMovimento;
     private Long status;
     private  Long totaldeprodutos;
+    private Long codigogrupotributacao;
+    private Float descontopadrao;
+    private String estado;
 
 
     // @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)

@@ -47,6 +47,9 @@ public class Movimentacoes {
     private Long codcondicoespagamento;
     @Transient
     private String desccondpagamento;
+    private Long regerarLancamentosFinanceiros;
+    private Long regerarFormaPagamento;
+    private Long tipofrete;
 
     private Long codigoTipopagamento;
     private Long codtransportadora;
@@ -59,7 +62,10 @@ public class Movimentacoes {
     private String nupedidoWmw;
     private String observacoes;
     private String observacoesMovimento;
+    private String chaveDesbloqueio;
     private Long status;
+
+
 
 
    // @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
@@ -132,5 +138,38 @@ public class Movimentacoes {
         if (dados.valorTotalPedido() != null){
             this.valorliquido = dados.valorTotalPedido();
         }
+
+        // Liberar bloqueio de edição
+        this.chaveDesbloqueio = null;
+
+        for (DadosCadastroItens itemDTO : dados.itens()) {
+            Itensmovimentacoes item = new Itensmovimentacoes();
+
+            item.setCodcoligada(1L);
+            item.setCodfilial(1L);
+            item.setMovimentacoes(this);
+            item.setCodlocalestoque(itemDTO.codigoLocalEstoque());
+            item.setCodigoUnidade(itemDTO.codigoUnidade());
+            item.setCodproduto(itemDTO.codigoProduto());
+            item.setIdproduto(itemDTO.idprd());
+            item.setIdentificadorProduto(itemDTO.codigoSimilar());
+            item.setDescproduto(itemDTO.descricaoProduto());
+            item.setQuantidade(itemDTO.quantidade());
+            item.setValorunitario(itemDTO.valorUnitario());
+            item.setValortotal(itemDTO.valorTotal());
+            this.itens.add(item);
+        }
+
+
+    }
+
+    public void bloquearMovimento(String chaveDesbloqueio) {
+        if (chaveDesbloqueio != null){
+            this.chaveDesbloqueio = chaveDesbloqueio;
+        }
+    }
+
+    public void desbloquearMovimento (){
+            this.chaveDesbloqueio = null;
     }
 }
