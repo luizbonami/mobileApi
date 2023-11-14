@@ -139,16 +139,25 @@ public class Movimentacoes {
             this.valorliquido = dados.valorTotalPedido();
         }
 
+        if (dados.codigoCodicaoPagamento() != null){
+            this.codcondicoespagamento = dados.codigoCodicaoPagamento();
+        }
+        if (dados.codigoTransportadora() != null){
+            this.codtransportadora = dados.codigoTransportadora();
+        }
         // Liberar bloqueio de edição
         this.chaveDesbloqueio = null;
 
         for (DadosCadastroItens itemDTO : dados.itens()) {
             Itensmovimentacoes item = new Itensmovimentacoes();
 
-            item.setCodcoligada(1L);
-            item.setCodfilial(1L);
             item.setMovimentacoes(this);
+            item.setCodcoligada(itemDTO.codigoFilial()); //passando a filial para a coligada
+            item.setCodfilial(itemDTO.codigoFilial());
+            item.setCodigoFilialOrigem(itemDTO.codigoFilial());
+            item.setCodigoFilialDestino(itemDTO.codigoFilial());
             item.setCodlocalestoque(itemDTO.codigoLocalEstoque());
+            item.setCodlocaldestino(itemDTO.codigoLocalEstoque());
             item.setCodigoUnidade(itemDTO.codigoUnidade());
             item.setCodproduto(itemDTO.codigoProduto());
             item.setIdproduto(itemDTO.idprd());
@@ -156,7 +165,14 @@ public class Movimentacoes {
             item.setDescproduto(itemDTO.descricaoProduto());
             item.setQuantidade(itemDTO.quantidade());
             item.setValorunitario(itemDTO.valorUnitario());
+            item.setValorunitarioCalculado(itemDTO.valorUnitario());
+            item.setValorunitarioLiquido(itemDTO.valorUnitario());
+            item.setValorunitarioOriginal(itemDTO.valorUnitario());
             item.setValortotal(itemDTO.valorTotal());
+            item.setValortotalLiquido(itemDTO.valorTotal());
+            item.setFiscalValorSt(itemDTO.fiscalValorSt());
+            item.setFiscalValorIpi(itemDTO.fiscalValorIpi());
+
             this.itens.add(item);
         }
 
